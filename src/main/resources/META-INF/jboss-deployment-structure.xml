@@ -5,6 +5,7 @@
             <module name="org.keycloak.keycloak-server-spi" export="true"/>
             <module name="org.keycloak.keycloak-server-spi-private" export="true"/>
             <module name="org.keycloak.keycloak-services" export="true"/>
+            <module name="javax.ws.rs.api" export="true"/>
         </dependencies>
     </deployment>
 </jboss-deployment-structure>
