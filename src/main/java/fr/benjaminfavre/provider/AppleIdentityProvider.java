@@ -61,8 +61,7 @@ public class AppleIdentityProvider extends OIDCIdentityProvider implements Socia
 
         return context;
     }
-
-    @Override
+     
     public SimpleHttp authenticateTokenRequest(SimpleHttp tokenRequest) {
         AppleIdentityProviderConfig config = (AppleIdentityProviderConfig) getConfig();
         tokenRequest.param(OAUTH2_PARAMETER_CLIENT_ID, config.getClientId());
@@ -80,16 +79,16 @@ public class AppleIdentityProvider extends OIDCIdentityProvider implements Socia
             keyWrapper.setPrivateKey(privateKey);
             SignatureSignerContext signer = new ServerECDSASignatureSignerContext(keyWrapper);
 
-            long currentTime = Time.currentTime();
+            int currentTime = Time.currentTime();
             JsonWebToken token = new JsonWebToken();
             token.issuer(config.getTeamId());
-            token.iat(currentTime);
-            token.exp(currentTime + 15 * 60);
+            token.issuedAt(currentTime);
+            token.expiration(currentTime + 15 * 60);
             token.audience("https://appleid.apple.com");
             token.subject(config.getClientId());
             String clientSecret = new JWSBuilder().jsonContent(token).sign(signer);
-
             tokenRequest.param(OAUTH2_PARAMETER_CLIENT_SECRET, clientSecret);
+	    logger.errorf("Client Secret %s", clientSecret);
         } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
             logger.errorf("Failed to generate client secret: %s", e);
         }
@@ -106,6 +105,18 @@ public class AppleIdentityProvider extends OIDCIdentityProvider implements Socia
         public OIDCEndpoint(AuthenticationCallback callback, RealmModel realm, EventBuilder event) {
             super(callback, realm, event);
         }
+    
+	@Override
+   	public SimpleHttp generateTokenRequest(String authorizationCode) {
+	   SimpleHttp tokenRequest = SimpleHttp.doPost(getConfig().getTokenUrl(), session)
+                    .param(OAUTH2_PARAMETER_CODE, authorizationCode)
+                    .param(OAUTH2_PARAMETER_CLIENT_ID, getConfig().getClientId())
+                    .param(OAUTH2_PARAMETER_CLIENT_SECRET, getConfig().getClientSecret())
+                    .param(OAUTH2_PARAMETER_REDIRECT_URI, session.getContext().getUri().getAbsolutePath().toString())
+                    .param(OAUTH2_PARAMETER_GRANT_TYPE, OAUTH2_GRANT_TYPE_AUTHORIZATION_CODE);
+       	   return authenticateTokenRequest(tokenRequest);
+    	}
+
 
         @POST
         public Response authResponse(
