@@ -7,7 +7,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>fr.benjaminfavre</groupId>
     <artifactId>apple-social-identity-provider</artifactId>
-    <version>1.0.1</version>
+    <version>7.0.1</version>
     <name>Apple Social Identity Provider</name>
     <description>Apple Social Identity Provider for Keycloak</description>
     <url>https://github.com/BenjaminFavre/keycloak-apple-social-identity-provider</url>
