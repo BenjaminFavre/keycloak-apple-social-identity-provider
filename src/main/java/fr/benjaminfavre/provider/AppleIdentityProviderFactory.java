@@ -18,10 +18,10 @@ public class AppleIdentityProviderFactory extends AbstractIdentityProviderFactor
         return new AppleIdentityProvider(session, new AppleIdentityProviderConfig(model));
     }
 
-    @Override
-    public AppleIdentityProviderConfig createConfig() {
-        return new AppleIdentityProviderConfig();
-    }
+    //@Override
+    //public AppleIdentityProviderConfig createConfig() {
+    //    return new AppleIdentityProviderConfig();
+    //}
 
     @Override
     public String getId() {
