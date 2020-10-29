@@ -1,5 +1,6 @@
 package fr.benjaminfavre.provider;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.keycloak.OAuth2Constants;
 import org.keycloak.broker.oidc.AbstractOAuth2IdentityProvider;
 import org.keycloak.broker.oidc.OIDCIdentityProvider;
@@ -118,14 +119,14 @@ public class AppleIdentityProvider extends OIDCIdentityProvider implements Socia
         }
     }
 
-
+    @JsonIgnoreProperties(ignoreUnknown = true)
     private static class User {
         public String email;
         public Name name;
 
+        @JsonIgnoreProperties(ignoreUnknown = true)
         private static class Name {
             public String firstName;
-            public String middleName;
             public String lastName;
         }
     }

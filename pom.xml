@@ -7,7 +7,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>fr.benjaminfavre</groupId>
     <artifactId>apple-social-identity-provider</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <name>Apple Social Identity Provider</name>
     <description>Apple Social Identity Provider for Keycloak</description>
     <url>https://github.com/BenjaminFavre/keycloak-apple-social-identity-provider</url>
@@ -27,21 +27,24 @@
     </properties>
 
     <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.wildfly.plugins</groupId>
-                    <artifactId>wildfly-maven-plugin</artifactId>
-                    <version>2.0.2.Final</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.wildfly.plugins</groupId>
                 <artifactId>wildfly-maven-plugin</artifactId>
+                <version>2.0.2.Final</version>
                 <configuration>
                     <skip>false</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <compilerArgs>
+                        <arg>-Xlint</arg>
+                    </compilerArgs>
+                    <verbose>true</verbose>
                 </configuration>
             </plugin>
         </plugins>
