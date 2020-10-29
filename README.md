@@ -13,13 +13,13 @@ The present extension addresses all these requirements.
 ## Installation
 
 1. Download the latest release of the provider JAR file [here](https://github.com/BenjaminFavre/keycloak-apple-social-identity-provider/releases).
-2. Install the provider JAR file following Keycloak instructions [there](https://www.keycloak.org/docs/latest/server_development/index.html#using-the-keycloak-deployer).
+1. Install the provider JAR file following Keycloak instructions [there](https://www.keycloak.org/docs/latest/server_development/index.html#using-the-keycloak-deployer).
 
 ## Configuration
 
 In Keycloak admin console:
 1. Add an identity provider and select *Apple*.
-2. Fill *Client secret* with the base 64 content of your private key file (trim delimiters and new lines).
+1. Fill *Client secret* with the base 64 content of your private key file (trim delimiters and new lines).
 
    e.g., if your private key is:
    
@@ -34,4 +34,5 @@ In Keycloak admin console:
    
        Rp6vMlHPYTHnyucsPvFk8gTzdYtTueMbmVznAtkUKhD9HPcI3bLKDrr0b2mNJLfStsyvhbpyMUIpaffKQcY7IUuM20ecYBjiyjkLuX5eDQUInWUINfCCyXQnNdSU4K1j2z4IJrvacQz1PFrL0Tj4lt72jSxikzMBHWsGdFyT90bx0R26GR4YCudKxltozVrKPsUC1cdy
 
-3. Fill *Team ID* and *Key ID* with corresponding values found in Apple Developper console.
+1. Fill *Team ID* and *Key ID* with corresponding values found in Apple Developper console.
+1. Set Default Scopes to 'openid%20name%20email' to retrieve email, firstname and lastname from apple.
