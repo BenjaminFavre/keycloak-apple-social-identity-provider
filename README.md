@@ -34,5 +34,5 @@ In Keycloak admin console:
    
        Rp6vMlHPYTHnyucsPvFk8gTzdYtTueMbmVznAtkUKhD9HPcI3bLKDrr0b2mNJLfStsyvhbpyMUIpaffKQcY7IUuM20ecYBjiyjkLuX5eDQUInWUINfCCyXQnNdSU4K1j2z4IJrvacQz1PFrL0Tj4lt72jSxikzMBHWsGdFyT90bx0R26GR4YCudKxltozVrKPsUC1cdy
 
-1. Fill *Team ID* and *Key ID* with corresponding values found in Apple Developper console.
+1. Fill *Team ID* and *Key ID* with corresponding values found in Apple Developer console.
 1. Set Default Scopes to 'openid%20name%20email' to retrieve email, firstname and lastname from apple.
