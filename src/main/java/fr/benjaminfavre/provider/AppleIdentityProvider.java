@@ -118,12 +118,14 @@ public class AppleIdentityProvider extends OIDCIdentityProvider implements Socia
         }
     }
 
+
     private static class User {
         public String email;
         public Name name;
 
         private static class Name {
             public String firstName;
+            public String middleName;
             public String lastName;
         }
     }
