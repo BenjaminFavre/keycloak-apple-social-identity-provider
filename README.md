@@ -19,9 +19,7 @@ The present extension addresses all these requirements.
 
 In Keycloak admin console:
 1. Add an identity provider and select *Apple*.
-1. Fill *Client secret* with the base 64 content of your private key file (trim delimiters and new lines).
-
-   e.g., if your private key is:
+1. Fill *Client secret* with the content of your private key file, e.g.
    
        -----BEGIN PRIVATE KEY-----
        Rp6vMlHPYTHnyucsPvFk8gTzdYtTueMbmVznAtkUKhD9HPcI3bLKDrr0b2mNJLfS
@@ -30,9 +28,5 @@ In Keycloak admin console:
        PsUC1cdy
        -----END PRIVATE KEY-----
    
-   then you should set *Client secret* with:
-   
-       Rp6vMlHPYTHnyucsPvFk8gTzdYtTueMbmVznAtkUKhD9HPcI3bLKDrr0b2mNJLfStsyvhbpyMUIpaffKQcY7IUuM20ecYBjiyjkLuX5eDQUInWUINfCCyXQnNdSU4K1j2z4IJrvacQz1PFrL0Tj4lt72jSxikzMBHWsGdFyT90bx0R26GR4YCudKxltozVrKPsUC1cdy
-
 1. Fill *Team ID* and *Key ID* with corresponding values found in Apple Developer console.
 1. Set Default Scopes to 'openid%20name%20email' to retrieve email, firstname and lastname from apple.
