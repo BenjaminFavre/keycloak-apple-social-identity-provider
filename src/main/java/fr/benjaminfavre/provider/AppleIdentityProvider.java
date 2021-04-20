@@ -67,7 +67,7 @@ public class AppleIdentityProvider extends OIDCIdentityProvider implements Socia
     public SimpleHttp authenticateTokenRequest(SimpleHttp tokenRequest) {
         AppleIdentityProviderConfig config = (AppleIdentityProviderConfig) getConfig();
         tokenRequest.param(OAUTH2_PARAMETER_CLIENT_ID, config.getClientId());
-        String base64PrivateKey = config.getClientSecret();
+        String base64PrivateKey = config.getClientSecret().replaceAll("[\r\n\t\f ]|-----.+?-----", "");
 
         try {
             KeyFactory keyFactory = KeyFactory.getInstance("EC");
