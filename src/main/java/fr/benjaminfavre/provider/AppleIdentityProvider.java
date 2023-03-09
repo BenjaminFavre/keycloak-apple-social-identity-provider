@@ -42,7 +42,7 @@ public class AppleIdentityProvider extends OIDCIdentityProvider implements Socia
 
     @Override
     public Object callback(RealmModel realm, AuthenticationCallback callback, EventBuilder event) {
-        return new OIDCEndpoint(callback, realm, event);
+        return new OIDCEndpoint(callback, realm, event, this);
     }
 
     @Override
@@ -104,8 +104,8 @@ public class AppleIdentityProvider extends OIDCIdentityProvider implements Socia
     }
 
     protected class OIDCEndpoint extends OIDCIdentityProvider.OIDCEndpoint {
-        public OIDCEndpoint(AuthenticationCallback callback, RealmModel realm, EventBuilder event) {
-            super(callback, realm, event);
+        public OIDCEndpoint(AuthenticationCallback callback, RealmModel realm, EventBuilder event, OIDCIdentityProvider provider) {
+            super(callback, realm, event, provider);
         }
 
         @POST
